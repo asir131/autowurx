@@ -9,7 +9,7 @@ import Link from "next/link"
 
 const page = () => {
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen  p-4">
       {/* Header */}
       <div  onClick={() => window.history.back()} className="flex items-center gap-2 text-[28px] ml-5 font-semibold cursor-pointer mb-8">
         <MdOutlineKeyboardArrowLeft size={35} />
@@ -17,8 +17,8 @@ const page = () => {
       </div>
 
       {/* Form Card */}
-      <div className="max-w-md mx-auto">
-        <Card className="bg-white shadow-sm">
+      <div className="max-w-2xl md:ml-10 ">
+        <Card className="bg-white p-10 rounded-lg shadow-sm">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg font-semibold text-gray-900">What is a Standard Vehicle?</CardTitle>
           </CardHeader>

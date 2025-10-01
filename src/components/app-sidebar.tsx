@@ -35,6 +35,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
+import Link from "next/link"
 
 const data = {
   user: {
@@ -186,9 +187,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5 bg-white"
             >
-              <a href="#">
+              <Link href="/">
                 <Image src={logo} height={100} width={200} alt="" />
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
