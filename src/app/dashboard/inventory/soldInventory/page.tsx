@@ -1,8 +1,9 @@
+import SoldInventory from '@/components/Pages/Vendor/Inventory/SoldInventory'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>soldInventory</div>
+    <div><SoldInventory/></div>
   )
 }
 

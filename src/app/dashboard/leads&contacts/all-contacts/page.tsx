@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>contacts</div>
+    <div>All contacts</div>
   )
 }
 

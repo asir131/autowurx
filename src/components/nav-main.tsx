@@ -36,6 +36,13 @@ export function NavMain({
   const isExistingInventoryActive = pathname === '/dashboard/inventory' || pathname === '/dashboard/inventory/existingInventory';
   const isSoldInventoryActive = pathname === '/dashboard/inventory/soldInventory';
   
+  // Check if we're on any leads & contacts related page
+  const isLeadsContactsSection = pathname.startsWith('/dashboard/leads&contacts');
+  
+  // Determine which leads & contacts sub-item is active
+  const isLeadsActive = pathname === '/dashboard/leads&contacts' || pathname === '/dashboard/leads-contacts/leads';
+  const isAllContactsActive = pathname === '/dashboard/leads&contacts/all-contacts';
+  
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -46,7 +53,9 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => {
-            const isActive = pathname === item.url || (item.title === "Inventory" && isInventorySection);
+            const isActive = pathname === item.url || 
+              (item.title === "Inventory" && isInventorySection) ||
+              (item.title === "Leads & Contacts" && isLeadsContactsSection);
             
             return (
               <React.Fragment key={item.title}>
@@ -80,7 +89,7 @@ export function NavMain({
 
                 {/* Render submenu for Inventory when it's active */}
                 {item.title === "Inventory" && isInventorySection && (
-                  <div className="ml-6 mb-2">
+                  <div className="ml-6 ">
                     <SidebarMenu>
                       <SidebarMenuItem>
                         <SidebarMenuButton 
@@ -105,6 +114,40 @@ export function NavMain({
                         >
                           <Link href="/dashboard/inventory/soldInventory">
                             Sold Inventory
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </div>
+                )}
+
+                {/* Render submenu for Leads & Contacts when it's active */}
+                {item.title === "Leads & Contacts" && isLeadsContactsSection && (
+                  <div className="ml-6 ">
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isLeadsActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/leads&contacts">
+                            Leads
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isAllContactsActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/leads&contacts/all-contacts">
+                            All Contacts
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
