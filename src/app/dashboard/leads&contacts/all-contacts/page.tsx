@@ -1,8 +1,9 @@
+import AllContacts from '@/components/Pages/Vendor/Inventory/AllContacts'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>All contacts</div>
+    <div><AllContacts/></div>
   )
 }
 
