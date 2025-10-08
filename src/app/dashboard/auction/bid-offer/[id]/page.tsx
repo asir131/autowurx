@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
-interface BidOfferProps {
+interface BidOffer {
   bidData?: {
     bidNumber: string;
     orderDate: string;
@@ -23,7 +23,7 @@ interface BidOfferProps {
   };
 }
 
-const BidOffer: React.FC<BidOfferProps> = ({ bidData }) => {
+const BidOffer: React.FC<BidOffer> = ({ bidData }) => {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
