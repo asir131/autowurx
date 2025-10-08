@@ -43,6 +43,13 @@ export function NavMain({
   const isLeadsActive = pathname === '/dashboard/leads&contacts' || pathname === '/dashboard/leads-contacts/leads';
   const isAllContactsActive = pathname === '/dashboard/leads&contacts/all-contacts';
   
+  // Check if we're on any auction-related page
+  const isAuctionSection = pathname.startsWith('/dashboard/auction');
+  
+  // Determine which auction sub-item is active
+  const isListingsActive = pathname === '/dashboard/auction/listings';
+  const isBidOfferActive = pathname === '/dashboard/auction/bid-offer';
+  
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -55,7 +62,8 @@ export function NavMain({
           {items.map((item) => {
             const isActive = pathname === item.url || 
               (item.title === "Inventory" && isInventorySection) ||
-              (item.title === "Leads & Contacts" && isLeadsContactsSection);
+              (item.title === "Leads & Contacts" && isLeadsContactsSection) ||
+              (item.title === "Auction" && isAuctionSection);
             
             return (
               <React.Fragment key={item.title}>
@@ -148,6 +156,40 @@ export function NavMain({
                         >
                           <Link href="/dashboard/leads&contacts/all-contacts">
                             All Contacts
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </div>
+                )}
+
+                {/* Render submenu for Auction when it's active */}
+                {item.title === "Auction" && isAuctionSection && (
+                  <div className="ml-6 ">
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isListingsActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/auction/listings">
+                            Listings
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isBidOfferActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/auction/bid-offer">
+                            Bid Offer
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
