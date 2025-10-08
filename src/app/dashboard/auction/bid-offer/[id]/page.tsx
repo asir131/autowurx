@@ -1,6 +1,6 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
+"use client";
+import React, { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 
 interface BidOfferPageProps {
   params: Promise<{ id: string }>;
@@ -24,47 +24,59 @@ interface BidData {
   comment: string;
 }
 
-export default async function BidOfferPage({ params }: BidOfferPageProps) {
-  const { id } = await params;
+export default function BidOfferPage({ params }: BidOfferPageProps) {
+  const { id } = useParams();  // Use useParams hook here
+  const router = useRouter();  // Use useRouter hook here
 
-  const bidData: BidData = {
-    bidNumber: '5444',
-    orderDate: 'Order 21 April, 2025 14:30 GMT',
-    userName: 'Abdur Khan',
-    userPhone: '98390903',
-    userId: 'USR-#888',
-    userEmail: 'example@gmail.com',
-    productName: '2020 Honda Civic LX',
-    category: 'Sedan',
-    productId: '434232',
-    bidId: '434232',
-    mainItemPrice: 1800,
-    additionalItem: 'Tool box',
-    additionalItemPrice: 'Free',
-    bidCount: 5,
-    comment: 'I would like to bid at 2007 Toyota Tacoma Base you have listed on Autowurx.com for $18,499 is still available.'
+  // Example of static bidData
+  const [bidData, setBidData] = useState<BidData | null>(null);
+
+  // Fetching data based on `id` could go here if necessary
+  useEffect(() => {
+    const fetchBidData = async () => {
+      // Mocking the bidData for demonstration, replace with actual API call
+      const fetchedBidData: BidData = {
+        bidNumber: '5444',
+        orderDate: 'Order 21 April, 2025 14:30 GMT',
+        userName: 'Abdur Khan',
+        userPhone: '98390903',
+        userId: 'USR-#888',
+        userEmail: 'example@gmail.com',
+        productName: '2020 Honda Civic LX',
+        category: 'Sedan',
+        productId: '434232',
+        bidId: '434232',
+        mainItemPrice: 1800,
+        additionalItem: 'Tool box',
+        additionalItemPrice: 'Free',
+        bidCount: 5,
+        comment: 'I would like to bid at 2007 Toyota Tacoma Base you have listed on Autowurx.com for $18,499 is still available.',
+      };
+
+      setBidData(fetchedBidData);
+    };
+
+    fetchBidData();
+  }, [id]);  // Runs when the component mounts or `id` changes
+
+  const handleBack = () => {
+    router.back();  // Go back to the previous page
   };
 
-  // Server Action for handling form submission
-  async function handleOffer(formData: FormData) {
-    'use server';
-    const offer = formData.get('offer');
-    const comments = formData.get('comments');
-    
-    console.log('Offer submitted:', { offer, comments });
-    // Handle the offer submission logic here
+  if (!bidData) {
+    return <div>Loading...</div>;  // Show a loading state until bidData is available
   }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-4xl mx-auto">
-        <Link 
-          href="/previous-page"
+      <div className="max-w-4xl ">
+        <button 
+          onClick={handleBack}
           className="inline-block px-6 py-2 text-sm font-medium rounded text-black mb-6"
           style={{ backgroundColor: '#FFE135' }}
         >
           Back
-        </Link>
+        </button>
 
         <div className="flex justify-between items-start border-b-2 pb-5 mb-8">
           <h1 className="text-3xl font-semibold text-gray-900">
@@ -76,52 +88,30 @@ export default async function BidOfferPage({ params }: BidOfferPageProps) {
         <div className="bg-white rounded-lg p-8 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 mb-8">
             <div>
-              <h2 className="text-xs text-gray-500 mb-4">
-                Your Information
-              </h2>
+              <h2 className="text-xs text-gray-500 mb-4">Your Information</h2>
               <div className="space-y-2">
-                <p className="text-sm text-gray-900">
-                  Name: {bidData.userName}
-                </p>
-                <p className="text-sm text-gray-900">
-                  Phone Number: {bidData.userPhone}
-                </p>
-                <p className="text-sm text-gray-900">
-                  User ID: {bidData.userId}
-                </p>
-                <p className="text-sm text-gray-900">
-                  Email: {bidData.userEmail}
-                </p>
+                <p className="text-sm text-gray-900">Name: {bidData.userName}</p>
+                <p className="text-sm text-gray-900">Phone Number: {bidData.userPhone}</p>
+                <p className="text-sm text-gray-900">User ID: {bidData.userId}</p>
+                <p className="text-sm text-gray-900">Email: {bidData.userEmail}</p>
               </div>
             </div>
 
             <div>
-              <h2 className="text-xs text-gray-500 mb-4">
-                Product Info
-              </h2>
+              <h2 className="text-xs text-gray-500 mb-4">Product Info</h2>
               <div className="space-y-2">
-                <p className="text-sm text-gray-900">
-                  Name: {bidData.productName}
-                </p>
-                <p className="text-sm text-gray-900">
-                  Category: {bidData.category}
-                </p>
-                <p className="text-sm text-gray-900">
-                  Product ID: {bidData.productId}
-                </p>
-                <p className="text-sm text-gray-900">
-                  Bid ID: {bidData.bidId}
-                </p>
+                <p className="text-sm text-gray-900">Name: {bidData.productName}</p>
+                <p className="text-sm text-gray-900">Category: {bidData.category}</p>
+                <p className="text-sm text-gray-900">Product ID: {bidData.productId}</p>
+                <p className="text-sm text-gray-900">Bid ID: {bidData.bidId}</p>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-200 pt-6">
-            <h2 className="text-base font-semibold text-gray-900 mb-6">
-              Bid Details
-            </h2>
+            <h2 className="text-base font-semibold text-gray-900 mb-6">Bid Details</h2>
 
-            <form action={handleOffer}>
+            <form>
               <div className="space-y-5">
                 <div className="flex justify-between items-center">
                   <p className="text-sm text-gray-900">Bid</p>
@@ -134,9 +124,7 @@ export default async function BidOfferPage({ params }: BidOfferPageProps) {
                 </div>
 
                 <div>
-                  <label htmlFor="offer-input" className="block text-sm text-gray-900 mb-2">
-                    Offer
-                  </label>
+                  <label htmlFor="offer-input" className="block text-sm text-gray-900 mb-2">Offer</label>
                   <input
                     id="offer-input"
                     name="offer"
@@ -147,9 +135,7 @@ export default async function BidOfferPage({ params }: BidOfferPageProps) {
                 </div>
 
                 <div>
-                  <label htmlFor="comments-textarea" className="block text-sm text-gray-900 mb-2">
-                    Comments
-                  </label>
+                  <label htmlFor="comments-textarea" className="block text-sm text-gray-900 mb-2">Comments</label>
                   <textarea
                     id="comments-textarea"
                     name="comments"

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface BidData {
@@ -21,35 +21,41 @@ interface BidData {
   comment: string;
 }
 
-interface PageProps {
-  params: Promise<{ [key: string]: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-const BidDetail: React.FC<PageProps> = async ({ params, searchParams }) => {
+const BidDetail: React.FC = () => {
   const router = useRouter();
-  const resolvedParams = await params;
-  const resolvedSearchParams = await searchParams;
-  const auctionId = resolvedSearchParams.auctionId as string || 'N/A';
+  const [data, setData] = useState<BidData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  // Sample data - replace with actual API call using the auctionId
-  const data: BidData = {
-    bidNumber: '5444',
-    orderDate: 'Order 21 April, 2025 14:30 GMT',
-    userName: 'Abdur Rahman',
-    userPhone: '98390903',
-    userId: 'USR-#888',
-    userEmail: 'example@gmail.com',
-    productName: '2020 Honda Civic LX',
-    category: 'Sedan',
-    productId: '434232',
-    bidId: auctionId,
-    mainItemPrice: 1818,
-    additionalItem: 'Tool box',
-    additionalItemPrice: 'Free',
-    bidCount: 5,
-    comment: '-----------'
-  };
+  useEffect(() => {
+    // You can replace this with your actual API call
+    const fetchData = async () => {
+      const auctionId = new URLSearchParams(window.location.search).get('auctionId') || 'N/A';
+
+      // Sample data - replace with actual API call using the auctionId
+      const fetchedData: BidData = {
+        bidNumber: '5444',
+        orderDate: 'Order 21 April, 2025 14:30 GMT',
+        userName: 'Abdur Rahman',
+        userPhone: '98390903',
+        userId: 'USR-#888',
+        userEmail: 'example@gmail.com',
+        productName: '2020 Honda Civic LX',
+        category: 'Sedan',
+        productId: '434232',
+        bidId: auctionId,
+        mainItemPrice: 1818,
+        additionalItem: 'Tool box',
+        additionalItemPrice: 'Free',
+        bidCount: 5,
+        comment: '-----------',
+      };
+
+      setData(fetchedData);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
 
   const handleBack = () => {
     router.back();
@@ -64,6 +70,14 @@ const BidDetail: React.FC<PageProps> = async ({ params, searchParams }) => {
     console.log('Bid accepted');
     // Add your accept logic here
   };
+
+  if (loading) {
+    return <div>Loading...</div>; // You can replace this with a spinner or any other loading state
+  }
+
+  if (!data) {
+    return <div>No data available</div>; // Handle the case where there's no data
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
