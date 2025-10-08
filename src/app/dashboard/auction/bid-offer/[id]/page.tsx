@@ -1,7 +1,5 @@
-'use client';
-
-
-
+// src/app/dashboard/auction/bid-offer/BidOffer.tsx
+"use client"
 import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
@@ -30,6 +28,7 @@ const BidOffer: React.FC<BidOfferProps> = ({ bidData }) => {
   const params = useParams();
   const id = params?.id as string;
 
+  // Sample data - replace with actual API call using the id from router.query
   const data = bidData || {
     bidNumber: '5444',
     orderDate: 'Order 21 April, 2025 14:30 GMT',
@@ -54,6 +53,7 @@ const BidOffer: React.FC<BidOfferProps> = ({ bidData }) => {
 
   const handleOffer = () => {
     console.log('Offer submitted');
+    // Add your offer logic here
   };
 
   return (
@@ -145,4 +145,4 @@ const BidOffer: React.FC<BidOfferProps> = ({ bidData }) => {
   );
 };
 
-export default BidOffer;
+export default BidOffer;  // Default export of the component
