@@ -3,33 +3,13 @@
 import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
-interface BidDetailProps {
-  bidData?: {
-    bidNumber: string;
-    orderDate: string;
-    userName: string;
-    userPhone: string;
-    userId: string;
-    userEmail: string;
-    productName: string;
-    category: string;
-    productId: string;
-    bidId: string;
-    mainItemPrice: number;
-    additionalItem?: string;
-    additionalItemPrice?: string;
-    bidCount: number;
-    comment: string;
-  };
-}
-
-const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
+const BidDetail: React.FC = () => {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
 
-  // Sample data - replace with actual API call using the id from router.query
-  const data = bidData || {
+  // Sample data - replace with actual API call using the id
+  const data = {
     bidNumber: '5444',
     orderDate: 'Order 21 April, 2025 14:30 GMT',
     userName: 'Abdur Rahman',
@@ -39,7 +19,7 @@ const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
     productName: '2020 Honda Civic LX',
     category: 'Sedan',
     productId: '434232',
-    bidId: '434232',
+    bidId: id || '434232', // Use the dynamic id from URL
     mainItemPrice: 1818,
     additionalItem: 'Tool box',
     additionalItemPrice: 'Free',
@@ -79,8 +59,6 @@ const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
           </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8">
-          
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
             <div>
               <h2 className="text-sm font-medium text-gray-500 mb-4">
@@ -125,7 +103,7 @@ const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
 
           <div className="border-t border-gray-200 pt-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-6">
-              Biding Details
+              Bidding Details
             </h2>
 
             <div className="space-y-6">

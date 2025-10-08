@@ -1,35 +1,39 @@
 'use client';
 
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation'; // useSearchParams is used for accessing query params
+import { useRouter } from 'next/navigation';
 
-interface BidDetailProps {
-  bidData?: {
-    bidNumber: string;
-    orderDate: string;
-    userName: string;
-    userPhone: string;
-    userId: string;
-    userEmail: string;
-    productName: string;
-    category: string;
-    productId: string;
-    bidId: string;
-    mainItemPrice: number;
-    additionalItem?: string;
-    additionalItemPrice?: string;
-    bidCount: number;
-    comment: string;
-  };
+interface BidData {
+  bidNumber: string;
+  orderDate: string;
+  userName: string;
+  userPhone: string;
+  userId: string;
+  userEmail: string;
+  productName: string;
+  category: string;
+  productId: string;
+  bidId: string;
+  mainItemPrice: number;
+  additionalItem?: string;
+  additionalItemPrice?: string;
+  bidCount: number;
+  comment: string;
 }
 
-const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
+interface PageProps {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+const BidDetail: React.FC<PageProps> = async ({ params, searchParams }) => {
   const router = useRouter();
-  const searchParams = useSearchParams(); // Access the search (query) parameters
-  const auctionId = searchParams.get('auctionId'); // Get the auctionId from the query string
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+  const auctionId = resolvedSearchParams.auctionId as string || 'N/A';
 
   // Sample data - replace with actual API call using the auctionId
-  const data = bidData || {
+  const data: BidData = {
     bidNumber: '5444',
     orderDate: 'Order 21 April, 2025 14:30 GMT',
     userName: 'Abdur Rahman',
@@ -39,7 +43,7 @@ const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
     productName: '2020 Honda Civic LX',
     category: 'Sedan',
     productId: '434232',
-    bidId: auctionId || 'N/A', // Use auctionId from query or default to 'N/A'
+    bidId: auctionId,
     mainItemPrice: 1818,
     additionalItem: 'Tool box',
     additionalItemPrice: 'Free',
@@ -73,7 +77,7 @@ const BidDetail: React.FC<BidDetailProps> = ({ bidData }) => {
         </button>
         <div className="flex justify-between items-start mb-8 border-b-2 pb-5">
           <h1 className="text-3xl font-semibold text-gray-900">
-            Bid #{data.bidId} {/* Display the bidId, which comes from auctionId query */}
+            Bid #{data.bidId}
           </h1>
           <p className="text-sm text-gray-600">{data.orderDate}</p>
         </div>

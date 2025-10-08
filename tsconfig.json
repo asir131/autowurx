@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/app/dashboard/auction/bid-offer/[id]/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
