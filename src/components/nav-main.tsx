@@ -50,6 +50,13 @@ export function NavMain({
   const isListingsActive = pathname === '/dashboard/auction/listings';
   const isBidOfferActive = pathname === '/dashboard/auction/bid-offer';
   
+  // Check if we're on any tools-related page
+  const isToolsSection = pathname.startsWith('/dashboard/tools');
+  
+  // Determine which tools sub-item is active
+  const isPaperworkActive = pathname === '/dashboard/tools';
+  const isCustomActive = pathname === '/dashboard/tools/custom';
+  
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -63,7 +70,8 @@ export function NavMain({
             const isActive = pathname === item.url || 
               (item.title === "Inventory" && isInventorySection) ||
               (item.title === "Leads & Contacts" && isLeadsContactsSection) ||
-              (item.title === "Auction" && isAuctionSection);
+              (item.title === "Auction" && isAuctionSection) ||
+              (item.title === "Tools" && isToolsSection);
             
             return (
               <React.Fragment key={item.title}>
@@ -190,6 +198,40 @@ export function NavMain({
                         >
                           <Link href="/dashboard/auction/bid-offer">
                             Bid Offer
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </div>
+                )}
+
+                {/* Render submenu for Tools when it's active */}
+                {item.title === "Tools" && isToolsSection && (
+                  <div className="ml-6 ">
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isPaperworkActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/tools">
+                            Paperwork
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isCustomActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/tools/custom">
+                            Custom
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
