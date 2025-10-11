@@ -66,6 +66,14 @@ export function NavMain({
   const isLeadsInfoActive = pathname === '/dashboard/reports/leads-info';
   const isCFSAnalyticsActive = pathname === '/dashboard/reports/cfs-analytics';
   
+  // Check if we're on any support-related page
+  const isSupportSection = pathname.startsWith('/dashboard/support');
+  
+  // Determine which support sub-item is active
+  const isPackageActive = pathname === '/dashboard/support';
+  const isContactUsActive = pathname === '/dashboard/support/contact-us';
+  const isHelpCenterActive = pathname === '/dashboard/support/help-center';
+  
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -81,7 +89,8 @@ export function NavMain({
               (item.title === "Leads & Contacts" && isLeadsContactsSection) ||
               (item.title === "Auction" && isAuctionSection) ||
               (item.title === "Tools" && isToolsSection) ||
-              (item.title === "Reports" && isReportsSection);
+              (item.title === "Reports" && isReportsSection) ||
+              (item.title === "Support" && isSupportSection);
             
             return (
               <React.Fragment key={item.title}>
@@ -302,6 +311,53 @@ export function NavMain({
                         >
                           <Link href="/dashboard/reports/cfs-analytics">
                             CFS Analytics
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </div>
+                )}
+
+                {/* Render submenu for Support when it's active */}
+                {item.title === "Support" && isSupportSection && (
+                  <div className="ml-6 ">
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isPackageActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/support">
+                            Package
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isContactUsActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/support/contact-us">
+                            Contact US
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isHelpCenterActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/support/help-center">
+                            Help Center
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
