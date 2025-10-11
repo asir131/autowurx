@@ -118,7 +118,7 @@ export default function BidOffer() {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen '>
       <div className='md:ml-5 p-6 flex flex-col gap-6'>
         {/* Header */}
         <div className='flex flex-col gap-3'>
