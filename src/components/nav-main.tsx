@@ -57,6 +57,15 @@ export function NavMain({
   const isPaperworkActive = pathname === '/dashboard/tools';
   const isCustomActive = pathname === '/dashboard/tools/custom';
   
+  // Check if we're on any reports-related page
+  const isReportsSection = pathname.startsWith('/dashboard/reports');
+  
+  // Determine which reports sub-item is active
+  const isInventoryHistoryActive = pathname === '/dashboard/reports';
+  const isInvoiceHistoryActive = pathname === '/dashboard/reports/invoice-history';
+  const isLeadsInfoActive = pathname === '/dashboard/reports/leads-info';
+  const isCFSAnalyticsActive = pathname === '/dashboard/reports/cfs-analytics';
+  
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -71,7 +80,8 @@ export function NavMain({
               (item.title === "Inventory" && isInventorySection) ||
               (item.title === "Leads & Contacts" && isLeadsContactsSection) ||
               (item.title === "Auction" && isAuctionSection) ||
-              (item.title === "Tools" && isToolsSection);
+              (item.title === "Tools" && isToolsSection) ||
+              (item.title === "Reports" && isReportsSection);
             
             return (
               <React.Fragment key={item.title}>
@@ -232,6 +242,66 @@ export function NavMain({
                         >
                           <Link href="/dashboard/tools/custom">
                             Custom
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </div>
+                )}
+
+                {/* Render submenu for Reports when it's active */}
+                {item.title === "Reports" && isReportsSection && (
+                  <div className="ml-6 ">
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isInventoryHistoryActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/reports">
+                            Inventory History
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isInvoiceHistoryActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/reports/invoice-history">
+                            Invoice History
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isLeadsInfoActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/reports/leads-info">
+                            Leads Info
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton 
+                          asChild
+                          className={cn(
+                            "text-sm py-6 opacity-55",
+                            isCFSAnalyticsActive && "bg-[#FFF4A3] text-accent-foreground font-medium"
+                          )}
+                        >
+                          <Link href="/dashboard/reports/cfs-analytics">
+                            CFS Analytics
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
