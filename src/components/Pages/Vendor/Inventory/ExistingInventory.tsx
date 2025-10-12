@@ -301,10 +301,10 @@ const ExistingInventory = () => {
                   <span className="text-xs text-gray-700">Edit</span>
                 </Link>
                 <Link href={`/dashboard/inventory/sell?id=${car.id}`}
-                  className="px-3 py-2 rounded-md text-xs font-medium transition-colors flex-1"
+                  className="px-3 pt-2   rounded-md text-xs font-medium transition-colors flex-1"
                   style={{ backgroundColor: "#FFE135", color: "#000" }}
                 >
-                  Sell / Remove
+                  Sell / Removes
                 </Link>
               </div>
             </div>
@@ -404,7 +404,7 @@ const ExistingInventory = () => {
                     <span className="text-sm text-gray-700">Edit</span>
                   </Link>
                   <Link href={`/dashboard/inventory/sell?id=${car.id}`}
-                    className="px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                    className="px-4 py-2 flex items-center rounded-md text-sm font-medium transition-colors"
                     style={{ backgroundColor: "#FFE135", color: "#000" }}
                   >
                     Sell / Remove

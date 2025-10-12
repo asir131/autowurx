@@ -1,6 +1,7 @@
 "use client"
 import { useState, useMemo } from 'react';
 import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowDown } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
 
 interface Lead {
   id: string;
@@ -138,6 +139,7 @@ export default function Leads() {
   const startIndex: number = (currentPage - 1) * itemsPerPage;
   const endIndex: number = startIndex + itemsPerPage;
   const currentLeads: Lead[] = filteredAndSortedLeads.slice(startIndex, endIndex);
+const router = useRouter();
 
   const goToPage = (page: number): void => {
     setCurrentPage(page);
@@ -490,9 +492,15 @@ export default function Leads() {
                         </div>
                       </td>
                       <td className="px-3 sm:px-4 py-3">
-                        <button className="bg-[#FFE135] px-3 py-2 rounded-md text-xs sm:text-sm font-medium">
-                          View/Reply
-                        </button>
+                       <button
+  onClick={() => {
+    // Ensure the URL matches the dynamic [id] page
+    router.push(`/dashboard/leads&contacts/${lead.id.replace('#', '')}`);
+  }}
+  className="bg-[#FFE135] px-3 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-[#ffdc13]"
+>
+  View/Reply
+</button>
                       </td>
                       <td className="px-3 sm:px-4 py-3 text-xs sm:text-sm text-gray-700">{lead.dateSold}</td>
                       <td className="px-3 sm:px-4 py-3">

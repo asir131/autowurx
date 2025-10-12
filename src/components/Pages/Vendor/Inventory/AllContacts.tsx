@@ -136,7 +136,7 @@ export default function AllContacts() {
   };
 
   return (
-    <div className="min-h-screen p-2 sm:p-4 overflow-x-hidden bg-gray-50">
+    <div className="min-h-screen p-2 sm:p-4 overflow-x-hidden ">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 sm:mb-8 px-2 sm:px-5">
         <div
