@@ -9,6 +9,7 @@ import autoday1 from '@/assets/localstrat/autoday1.png';
 import autoday2 from '@/assets/localstrat/autoday2.png';
 import TeamMarketplace from '../Home/TeamMarketplace';
 import FeaturedCars from '../Home/FeaturedCars';
+import Tools from '../Home/Tools';
 
 export default function LocalMarketStart() {
     return (
@@ -131,7 +132,7 @@ export default function LocalMarketStart() {
             </div>
 
             <div className='container'>
-                <TeamMarketplace/>
+                <Tools/>
             </div>
 
             <div className='container'>
