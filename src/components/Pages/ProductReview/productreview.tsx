@@ -73,7 +73,7 @@ const ProductReview = () => {
         <div className="lg:w-3/5 space-y-4">
           <div className="relative w-full h-[80%] rounded-md overflow-hidden ">
             <Image
-              src={car1} 
+              src={car1}
               alt="Car"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
@@ -84,7 +84,7 @@ const ProductReview = () => {
                 {/* Add images here */}
 
                 <Image
-                  src={car6} 
+                  src={car6}
                   alt="Car"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
@@ -94,7 +94,7 @@ const ProductReview = () => {
         </div>
 
         {/* Contact Form Section */}
-        <div className="lg:w-2/5 bg-white shadow-lg rounded-lg p-6 space-y-4">
+        <div className="w-5/6 lg:w-2/5 bg-white shadow-lg rounded-lg p-6 mt-2 space-y-4">
           <h2 className="text-2xl font-semibold">Contact seller</h2>
           <form>
             <div className="space-y-2">

@@ -14,7 +14,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   // Add other car objects here as needed
   {
@@ -26,7 +27,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -37,7 +39,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -48,7 +51,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -59,7 +63,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -70,7 +75,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -81,7 +87,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -92,7 +99,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -103,7 +111,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -114,7 +123,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -125,7 +135,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
   {
     name: "Tesla Model S Plaid",
@@ -136,7 +147,8 @@ const carData = [
     transmission: "Automatic",
     location: "San Francisco",
     price: 134990,
-    image:"https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
+    image:
+      "https://i.ibb.co/hxXW3PfM/af5509826beea284b87a577b2fef8e56deba1fe1.png",
   },
 ];
 
@@ -484,8 +496,8 @@ export default function NewCars() {
             </div>
           </div>
 
-          <div>
-            <div className="flex space-x-4">
+          <div className="w-full">
+            <div className="flex space-x-4 mb-5">
               <button className="text-black py-2 px-4 rounded-lg">
                 Sort by: Best Selling
               </button>
@@ -493,20 +505,20 @@ export default function NewCars() {
                 id="distance"
                 value={selectedDistance}
                 onChange={(e) => setSelectedDistance(e.target.value)}
-                className="mt-1 block w-[100px] rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-[130px] rounded-md px-3 border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
                 <option value="Nationwide">Best Selling</option>
                 <option value="Within 10 miles"> Selling</option>
               </select>
               {/* More filter buttons */}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-7">
+            <div className="grid grid-cols-1 w-full md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-2 lg:gap-7">
               {carData.map((car, index) => (
                 <div
                   key={index}
-                  className="xl:w-[400px] bg-white rounded-2xl shadow p-4 group transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                  className="w-full sm:w-[300px] md:w-[340px] xl:w-[400px] bg-white rounded-2xl shadow p-4 group transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
                 >
-                  <div className="relative  h-48 rounded-xl overflow-hidden mb-4">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden mb-4">
                     <Image
                       src={car.image}
                       alt={car.name}
@@ -515,19 +527,26 @@ export default function NewCars() {
                       className="rounded-xl"
                     />
                   </div>
+
                   <div className="flex justify-between items-center mb-2">
-                    <h2 className="text-lg font-semibold">{car.name}</h2>
+                    <h2 className="text-base sm:text-lg font-semibold truncate">
+                      {car.name}
+                    </h2>
                     <Heart
                       className={`w-5 h-5 cursor-pointer ${
-                        likedCars.has(index) ? "text-[#FFE135] " : "text-gray-400"
+                        likedCars.has(index)
+                          ? "text-[#FFE135]"
+                          : "text-gray-400"
                       }`}
                       onClick={() => toggleLike(index)}
                     />
                   </div>
-                  <p className="text-sm text-gray-500">
+
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {car.year} • {car.miles} miles
                   </p>
-                  <div className="grid grid-cols-2 text-sm text-gray-600 my-2 gap-2">
+
+                  <div className="grid grid-cols-2 text-xs sm:text-sm text-gray-600 my-2 gap-2">
                     <span className="flex items-center gap-1">
                       <Flashlight className="w-4 h-4" /> {car.hp} hp
                     </span>
@@ -541,13 +560,14 @@ export default function NewCars() {
                       <MapPin className="w-4 h-4" /> {car.location}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-xl font-bold">
+
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-4 gap-3">
+                    <span className="text-lg sm:text-xl font-bold">
                       ${car.price.toLocaleString()}
                     </span>
                     <button
                       onClick={openModal}
-                      className="mt-4 bg-yellow-500 text-white py-2 px-6 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                      className="bg-yellow-500 text-white py-2 px-4 sm:px-6 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full sm:w-auto"
                     >
                       Check Availability
                     </button>
